@@ -1,0 +1,17 @@
+HubID,HubIP,Area
+Light 1,192.168.1.101,Zone 1
+Light 2,192.168.1.102,Zone 1
+Light 3,192.168.1.107,Zone 2
+Light 4,192.168.1.104,Zone 2
+Light 5,192.168.1.105,Zone 3
+Light 6,192.168.1.106,Zone 4
+Light 7,192.168.1.103,Zone 4
+Light 8,192.168.1.116,Zone 4
+Light 9,192.168.1.109,Zone 5
+Light 10,192.168.1.110,Zone 5
+Light 11,192.168.1.111,Zone 5
+Light 12,192.168.1.112,Zone 6
+Light 13,192.168.1.113,Zone 6
+Light 14,192.168.1.114,Zone 7
+Light 15,192.168.1.115,Zone 7
+Light 16,192.168.1.108,Zone 7
