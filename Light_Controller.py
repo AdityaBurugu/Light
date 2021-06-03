@@ -10,10 +10,12 @@ import pandas as pd
 from ping3 import ping
 
 from LightControllerThread import LightController
-class Time_Set(QMainWindow):
+class Time_Set(QDialog):
     def __init__(self):
         super(Time_Set, self).__init__()
-        self.setFixedSize(400,400)
+        self.setFixedSize(400,300)
+
+        self.setWindowTitle("Shift")
 
 
         this_moment = QtCore.QTime.currentTime()
@@ -34,18 +36,24 @@ class Time_Set(QMainWindow):
         self.Shift.setGeometry(250, 40, 100, 30)
         self.Shift.setText("Shift")
 
+        self.label_StartTime = QLabel("Start Time",self)
+        self.label_StartTime.setGeometry(50,100,100,30)
+
+        self.label_StopTime = QLabel("Stop Time", self)
+        self.label_StopTime.setGeometry(250, 100, 100, 30)
+
         self.starttimeedit = QTimeEdit(self)
-        self.starttimeedit.setGeometry(50,200,100,30)
+        self.starttimeedit.setGeometry(50,150,100,30)
         self.starttimeedit.hide()
         self.starttimeedit.setTime(QTime(int(self.presenttimehour[0:2]),int(self.presenttimemin),int(self.presenttimesec)))
 
         self.stoptimeedit = QTimeEdit(self)
-        self.stoptimeedit.setGeometry(150, 200, 100, 30)
+        self.stoptimeedit.setGeometry(250, 150, 100, 30)
         self.stoptimeedit.hide()
         self.stoptimeedit.setTime(QTime.currentTime().addSecs(300))
 
         self.setbutton = QPushButton("SET",self)
-        self.setbutton.setGeometry(50,300,100,30)
+        self.setbutton.setGeometry(150,230,100,30)
         self.setbutton.clicked.connect(self.set)
         self.setbutton.hide()
 
@@ -61,11 +69,15 @@ class Time_Set(QMainWindow):
             self.AutoOff.click()
             self.stoptimeedit.hide()
             self.starttimeedit.hide()
+            self.label_StopTime.hide()
+            self.label_StartTime.hide()
             self.setbutton.hide()
         else:
             self.Shift.click()
             self.stoptimeedit.show()
             self.starttimeedit.show()
+            self.label_StartTime.show()
+            self.label_StopTime.show()
 
     def set(self):
         self.Dict["trigger Mode"] = "Shift"
@@ -97,11 +109,15 @@ class Time_Set(QMainWindow):
     def Window(self):
         self.stoptimeedit.show()
         self.starttimeedit.show()
+        self.label_StopTime.show()
+        self.label_StartTime.show()
         self.setbutton.show()
         print("Shift")
     def Window2(self):
         self.stoptimeedit.hide()
         self.starttimeedit.hide()
+        self.label_StartTime.hide()
+        self.label_StopTime.hide()
         self.setbutton.hide()
         self.Dict["trigger Mode"] = "Auto"
         self.Dict["On Time"] = ""
